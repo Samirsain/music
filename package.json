@@ -4,12 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/deploy-db.mjs && next build",
     "start": "next start",
     "lint": "eslint",
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
-    "setup": "node scripts/setup.mjs"
+    "setup": "node scripts/setup.mjs",
+    "predev": "node scripts/setup.mjs",
+    "postinstall": "prisma generate",
+    "use:postgres": "node scripts/db-provider.mjs postgresql",
+    "use:sqlite": "node scripts/db-provider.mjs sqlite"
   },
   "dependencies": {
     "@prisma/client": "^6.19.3",

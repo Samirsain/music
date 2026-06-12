@@ -47,17 +47,11 @@ swap in Twilio / Interakt for production (Phase 2).
 ## 🚀 Getting started
 
 ```bash
-# 1. Install dependencies
 npm install
-
-# 2. Set up the database (creates .env, pushes schema, seeds demo data)
-npm run setup
-
-# 3. Start the dev server
-npm run dev
+npm run dev   # auto-creates .env + SQLite db + demo data on first run
 ```
 
-Open <http://localhost:3000>.
+Open <http://localhost:3000>. (You can also run `npm run setup` manually.)
 
 ### Demo accounts (created by the seed)
 
@@ -71,6 +65,35 @@ data) and a few influencer hires so every screen has realistic content.
 
 ---
 
+## ▲ Deploy to Vercel
+
+SQLite doesn't work on Vercel (the serverless filesystem is read-only/ephemeral), so
+production needs **Postgres**. The build is self-provisioning: when it sees a Postgres
+`DATABASE_URL`, it automatically switches Prisma to Postgres, creates the tables, and seeds
+demo data (only if the database is empty). You just supply two environment variables.
+
+**1. Add a Postgres database**
+   - Easiest: in your Vercel project → **Storage** tab → **Create Database** → *Neon
+     (Postgres)* → connect it to the project. This adds `DATABASE_URL` automatically.
+   - Or create a free [Supabase](https://supabase.com) / [Neon](https://neon.tech) project
+     yourself and add its connection string as the `DATABASE_URL` env var
+     (Project → Settings → Environment Variables).
+
+**2. Add `AUTH_SECRET`** (same place) — a long random string, e.g. from `openssl rand -hex 32`.
+
+**3. Redeploy.** The build runs `scripts/deploy-db.mjs` → schema pushed → demo data seeded →
+every page works, with the same demo logins as local.
+
+| Env var        | Value                                              |
+| -------------- | -------------------------------------------------- |
+| `DATABASE_URL` | Postgres connection string (Neon/Supabase)         |
+| `AUTH_SECRET`  | Long random string (`openssl rand -hex 32`)        |
+
+Local dev keeps using SQLite untouched. (`npm run use:postgres` / `use:sqlite` switch the
+committed provider manually if you ever need to.)
+
+---
+
 ## 📜 Scripts
 
 | Script            | Purpose                                          |
@@ -79,9 +102,11 @@ data) and a few influencer hires so every screen has realistic content.
 | `npm run build`   | Production build                                 |
 | `npm run start`   | Run the production build                         |
 | `npm run lint`    | ESLint                                           |
-| `npm run setup`   | One-shot: create `.env`, push schema, seed data  |
+| `npm run setup`   | Create `.env`, push schema, seed (auto-runs before `dev`) |
 | `npm run db:push` | Apply the Prisma schema to the database          |
 | `npm run db:seed` | Re-seed demo data                                |
+| `npm run use:postgres` | Switch Prisma provider to Postgres (for Vercel) |
+| `npm run use:sqlite`   | Switch back to SQLite (local dev)               |
 
 ---
 
