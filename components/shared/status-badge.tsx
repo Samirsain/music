@@ -24,8 +24,8 @@ export function StatusBadge({ status }: { status: string }) {
     <Badge variant={VARIANT_MAP[status] ?? "muted"}>
       {status === "LIVE" && (
         <span className="relative flex size-1.5">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-          <span className="relative inline-flex size-1.5 rounded-full bg-emerald-400" />
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60" />
+          <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500" />
         </span>
       )}
       {statusLabel(status)}

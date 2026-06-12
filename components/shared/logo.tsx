@@ -12,7 +12,7 @@ export function EqualizerIcon({ className, animate = true }: { className?: strin
   return (
     <span
       className={cn(
-        "inline-flex h-6 w-6 items-end justify-center gap-[2px] rounded-md bg-gradient-to-br from-violet-600 to-fuchsia-600 p-1",
+        "inline-flex h-6 w-6 items-end justify-center gap-[2px] rounded-md bg-primary p-1",
         className
       )}
     >
@@ -32,7 +32,7 @@ export function Logo({ className, href = "/" }: { className?: string; href?: str
     <Link href={href} className={cn("flex items-center gap-2 font-semibold tracking-tight", className)}>
       <EqualizerIcon />
       <span className="text-lg">
-        Ampli<span className="text-gradient">Tune</span>
+        Ampli<span className="text-primary">Tune</span>
       </span>
       <span className="sr-only">{APP_NAME}</span>
     </Link>

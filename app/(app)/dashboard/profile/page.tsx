@@ -13,12 +13,12 @@ export default async function ProfilePage() {
       <div className="flex items-center gap-4">
         <GradientAvatar name={user.name} className="size-16" textClassName="text-lg" />
         <div>
-          <h2 className="text-2xl font-bold">{user.artistName || user.name}</h2>
+          <h2 className="text-2xl font-semibold">{user.artistName || user.name}</h2>
           <p className="text-muted-foreground">{user.email}</p>
         </div>
       </div>
 
-      <Card className="border-white/10">
+      <Card className="border-border">
         <CardHeader>
           <CardTitle>Profile settings</CardTitle>
           <CardDescription>Keep your details up to date so we can reach you about campaigns.</CardDescription>

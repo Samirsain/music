@@ -28,8 +28,8 @@ export default async function InfluencersPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
       <div className="mx-auto max-w-2xl text-center">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Hire India&apos;s top <span className="text-gradient">music influencers</span>
+        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+          Hire India&apos;s top <span className="text-primary">music influencers</span>
         </h1>
         <p className="mt-4 text-muted-foreground">
           Get your track on the right reels, playlists, and reaction videos. Browse by

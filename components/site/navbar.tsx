@@ -41,7 +41,7 @@ export function Navbar({
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/5 bg-background/70 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Logo />
 
@@ -88,7 +88,7 @@ export function Navbar({
               <Button variant="ghost" asChild>
                 <Link href="/login">Log in</Link>
               </Button>
-              <Button variant="gradient" asChild>
+              <Button variant="default" asChild>
                 <Link href="/signup">Start promoting</Link>
               </Button>
             </>
@@ -111,7 +111,7 @@ export function Navbar({
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-white/5 md:hidden"
+            className="overflow-hidden border-t border-border md:hidden"
           >
             <div className="flex flex-col gap-1 px-4 py-4">
               {LINKS.map((l) => (
@@ -124,7 +124,7 @@ export function Navbar({
                   {l.label}
                 </Link>
               ))}
-              <div className="mt-2 flex flex-col gap-2 border-t border-white/5 pt-3">
+              <div className="mt-2 flex flex-col gap-2 border-t border-border pt-3">
                 {session ? (
                   <>
                     <Button variant="secondary" asChild>
@@ -150,7 +150,7 @@ export function Navbar({
                         Log in
                       </Link>
                     </Button>
-                    <Button variant="gradient" asChild>
+                    <Button variant="default" asChild>
                       <Link href="/signup" onClick={() => setOpen(false)}>
                         Start promoting
                       </Link>

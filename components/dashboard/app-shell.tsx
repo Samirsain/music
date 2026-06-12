@@ -7,7 +7,7 @@ import {
   LogOut,
   Megaphone,
   Menu,
-  Sparkles,
+  Handshake,
   Star,
   UserCircle,
   Users,
@@ -34,7 +34,7 @@ const NAVS: Record<string, { items: NavItem[]; titles: Record<string, string>; d
     items: [
       { href: "/dashboard", label: "Overview", icon: LayoutDashboard, exact: true },
       { href: "/dashboard/campaigns", label: "Campaigns", icon: Megaphone },
-      { href: "/dashboard/bookings", label: "Influencer hires", icon: Sparkles },
+      { href: "/dashboard/bookings", label: "Influencer hires", icon: Handshake },
       { href: "/dashboard/profile", label: "Profile", icon: UserCircle },
     ],
     titles: {
@@ -50,7 +50,7 @@ const NAVS: Record<string, { items: NavItem[]; titles: Record<string, string>; d
     items: [
       { href: "/admin", label: "Overview", icon: LayoutDashboard, exact: true },
       { href: "/admin/campaigns", label: "Campaigns", icon: Megaphone },
-      { href: "/admin/bookings", label: "Influencer hires", icon: Sparkles },
+      { href: "/admin/bookings", label: "Influencer hires", icon: Handshake },
       { href: "/admin/influencers", label: "Manage influencers", icon: Star },
       { href: "/admin/clients", label: "Clients", icon: Users },
     ],
@@ -95,14 +95,14 @@ export function AppShell({
   return (
     <div className="flex min-h-screen">
       {/* Desktop sidebar */}
-      <aside className="hidden w-64 shrink-0 flex-col border-r border-white/5 bg-card/30 lg:flex">
-        <div className="flex h-16 items-center border-b border-white/5 px-6">
+      <aside className="hidden w-64 shrink-0 flex-col border-r border-border bg-card lg:flex">
+        <div className="flex h-16 items-center border-b border-border px-6">
           <Logo />
         </div>
         <div className="flex-1 overflow-y-auto p-4">
           <SidebarNav items={items} />
         </div>
-        <div className="border-t border-white/5 p-4">
+        <div className="border-t border-border p-4">
           <div className="flex items-center gap-3 rounded-lg p-2">
             <GradientAvatar name={user.name} className="size-9" />
             <div className="min-w-0 flex-1">
@@ -119,9 +119,9 @@ export function AppShell({
       {/* Mobile drawer */}
       {mobileOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
-          <aside className="absolute left-0 top-0 flex h-full w-72 flex-col border-r border-white/10 bg-card">
-            <div className="flex h-16 items-center justify-between border-b border-white/5 px-5">
+          <div className="absolute inset-0 bg-black/40" onClick={() => setMobileOpen(false)} />
+          <aside className="absolute left-0 top-0 flex h-full w-72 flex-col border-r border-border bg-card">
+            <div className="flex h-16 items-center justify-between border-b border-border px-5">
               <Logo />
               <button onClick={() => setMobileOpen(false)} className="text-muted-foreground">
                 <X className="size-5" />
@@ -130,7 +130,7 @@ export function AppShell({
             <div className="flex-1 overflow-y-auto p-4">
               <SidebarNav items={items} onNavigate={() => setMobileOpen(false)} />
             </div>
-            <div className="border-t border-white/5 p-4">
+            <div className="border-t border-border p-4">
               <Button variant="ghost" size="sm" className="w-full justify-start" onClick={logout}>
                 <LogOut className="size-4" /> Log out
               </Button>
@@ -140,7 +140,7 @@ export function AppShell({
       )}
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-white/5 bg-background/80 px-4 backdrop-blur-xl sm:px-6">
+        <header className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-border bg-background/90 px-4 backdrop-blur sm:px-6">
           <div className="flex items-center gap-3">
             <button
               className="rounded-md p-2 text-muted-foreground hover:text-foreground lg:hidden"

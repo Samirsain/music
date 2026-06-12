@@ -93,7 +93,7 @@ export function ProfileForm({ user }: Props) {
           </SelectContent>
         </Select>
       </div>
-      <Button type="submit" variant="gradient" disabled={loading}>
+      <Button type="submit" variant="default" disabled={loading}>
         {loading && <Loader2 className="size-4 animate-spin" />}
         Save changes
       </Button>

@@ -38,9 +38,9 @@ export function PlatformIcon({ platform, className }: { platform: string; classN
 }
 
 const COLORS: Record<string, string> = {
-  INSTAGRAM: "bg-pink-500/15 text-pink-400",
-  YOUTUBE: "bg-red-500/15 text-red-400",
-  SPOTIFY: "bg-green-500/15 text-green-400",
+  INSTAGRAM: "bg-pink-50 text-pink-600",
+  YOUTUBE: "bg-red-50 text-red-600",
+  SPOTIFY: "bg-emerald-50 text-emerald-600",
 };
 
 const LABELS: Record<string, string> = {

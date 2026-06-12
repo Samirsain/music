@@ -39,7 +39,7 @@ export function CampaignAdminActions({
     <div className="flex flex-wrap justify-end gap-2">
       {status === "IN_REVIEW" && (
         <>
-          <Button size="sm" variant="gradient" onClick={() => update("LIVE", "Campaign launched")} disabled={!!loading}>
+          <Button size="sm" variant="default" onClick={() => update("LIVE", "Campaign launched")} disabled={!!loading}>
             {busy("LIVE") ? <Loader2 className="size-3.5 animate-spin" /> : <Play className="size-3.5" />}
             Launch
           </Button>
@@ -63,7 +63,7 @@ export function CampaignAdminActions({
       )}
       {status === "PAUSED" && (
         <>
-          <Button size="sm" variant="gradient" onClick={() => update("LIVE", "Campaign resumed")} disabled={!!loading}>
+          <Button size="sm" variant="default" onClick={() => update("LIVE", "Campaign resumed")} disabled={!!loading}>
             {busy("LIVE") ? <Loader2 className="size-3.5 animate-spin" /> : <Play className="size-3.5" />}
             Resume
           </Button>

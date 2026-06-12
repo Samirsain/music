@@ -3,7 +3,7 @@ import {
   IndianRupee,
   Megaphone,
   Users,
-  Sparkles,
+  Handshake,
   TrendingUp,
   ArrowUpRight,
   Clock,
@@ -54,24 +54,24 @@ export default async function AdminOverviewPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold">Platform overview</h2>
+        <h2 className="text-2xl font-semibold">Platform overview</h2>
         <p className="text-muted-foreground">Revenue, campaigns and activity across all clients.</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard label="Total revenue" value={formatINR(revenue)} icon={IndianRupee} hint="All successful payments" />
-        <StatCard label="Campaigns" value={campaignCount} icon={Megaphone} accent="text-cyan-400" hint={`${liveCount} live now`} />
-        <StatCard label="Clients" value={clientCount} icon={Users} accent="text-emerald-400" />
-        <StatCard label="Influencer hires" value={bookingCount} icon={Sparkles} accent="text-amber-400" hint={`${pendingBookings} pending`} />
+        <StatCard label="Campaigns" value={campaignCount} icon={Megaphone} accent="text-sky-600" hint={`${liveCount} live now`} />
+        <StatCard label="Clients" value={clientCount} icon={Users} accent="text-emerald-600" />
+        <StatCard label="Influencer hires" value={bookingCount} icon={Handshake} accent="text-amber-600" hint={`${pendingBookings} pending`} />
       </div>
 
       {(reviewCount > 0 || pendingBookings > 0) && (
         <div className="grid gap-4 sm:grid-cols-2">
           {reviewCount > 0 && (
-            <Card className="border-sky-500/30 bg-sky-500/5">
+            <Card className="border-sky-200 bg-sky-50">
               <CardContent className="flex items-center justify-between py-4">
                 <div className="flex items-center gap-3">
-                  <Clock className="size-5 text-sky-400" />
+                  <Clock className="size-5 text-sky-600" />
                   <p className="text-sm">
                     <span className="font-semibold">{reviewCount}</span> campaign(s) awaiting review
                   </p>
@@ -83,10 +83,10 @@ export default async function AdminOverviewPage() {
             </Card>
           )}
           {pendingBookings > 0 && (
-            <Card className="border-amber-500/30 bg-amber-500/5">
+            <Card className="border-amber-200 bg-amber-50">
               <CardContent className="flex items-center justify-between py-4">
                 <div className="flex items-center gap-3">
-                  <Clock className="size-5 text-amber-400" />
+                  <Clock className="size-5 text-amber-600" />
                   <p className="text-sm">
                     <span className="font-semibold">{pendingBookings}</span> hire request(s) pending
                   </p>
@@ -101,7 +101,7 @@ export default async function AdminOverviewPage() {
       )}
 
       <div className="grid gap-6 lg:grid-cols-3">
-        <Card className="border-white/10 lg:col-span-2">
+        <Card className="border-border lg:col-span-2">
           <CardHeader className="flex-row items-center justify-between">
             <CardTitle>Recent campaigns</CardTitle>
             <Button variant="ghost" size="sm" asChild>
@@ -115,7 +115,7 @@ export default async function AdminOverviewPage() {
               {recentCampaigns.map((c) => (
                 <div
                   key={c.id}
-                  className="flex items-center justify-between gap-4 rounded-xl border border-white/5 bg-background/40 p-4"
+                  className="flex items-center justify-between gap-4 rounded-xl border border-border bg-muted/40 p-4"
                 >
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">
@@ -133,10 +133,10 @@ export default async function AdminOverviewPage() {
           </CardContent>
         </Card>
 
-        <Card className="border-white/10">
+        <Card className="border-border">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="size-4 text-emerald-400" /> Recent payments
+              <TrendingUp className="size-4 text-emerald-600" /> Recent payments
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -149,7 +149,7 @@ export default async function AdminOverviewPage() {
                       {p.method} · {formatDate(p.createdAt)}
                     </p>
                   </div>
-                  <span className="text-sm font-semibold text-emerald-400">+{formatINR(p.amount)}</span>
+                  <span className="text-sm font-semibold text-emerald-600">+{formatINR(p.amount)}</span>
                 </div>
               ))}
               {recentPayments.length === 0 && (

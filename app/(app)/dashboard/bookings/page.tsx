@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import Link from "next/link";
-import { Sparkles, Plus } from "lucide-react";
+import { Handshake, Plus } from "lucide-react";
 import { prisma } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
@@ -26,10 +26,10 @@ export default async function BookingsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold">Influencer hires</h2>
+          <h2 className="text-2xl font-semibold">Influencer hires</h2>
           <p className="text-muted-foreground">Your collaborations with music influencers.</p>
         </div>
-        <Button variant="gradient" asChild>
+        <Button variant="default" asChild>
           <Link href="/influencers">
             <Plus className="size-4" /> Hire someone
           </Link>
@@ -38,7 +38,7 @@ export default async function BookingsPage() {
 
       {bookings.length === 0 ? (
         <EmptyState
-          icon={Sparkles}
+          icon={Handshake}
           title="No hires yet"
           description="Browse our marketplace and collaborate with India's top music influencers to amplify your reach."
           actionLabel="Browse influencers"

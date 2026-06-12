@@ -32,10 +32,10 @@ export default async function CampaignsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold">Your campaigns</h2>
+          <h2 className="text-2xl font-semibold">Your campaigns</h2>
           <p className="text-muted-foreground">All your music promotions in one place.</p>
         </div>
-        <Button variant="gradient" asChild>
+        <Button variant="default" asChild>
           <Link href="/dashboard/campaigns/new">
             <Plus className="size-4" /> New campaign
           </Link>
@@ -59,7 +59,7 @@ export default async function CampaignsPage() {
                 : Math.min(100, Math.round((c.totals.spend / c.totalBudget) * 100));
             return (
               <Link key={c.id} href={`/dashboard/campaigns/${c.id}`}>
-                <Card className="h-full gap-0 border-white/10 p-5 transition-all hover:border-fuchsia-500/40 hover:shadow-lg hover:shadow-fuchsia-950/20">
+                <Card className="h-full gap-0 border-border p-5 transition-all hover:border-primary/40 hover:shadow-md">
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0">
                       <h3 className="truncate font-semibold">{c.songName}</h3>
@@ -72,12 +72,12 @@ export default async function CampaignsPage() {
                     {c.adPlatforms.split(",").map((p) => (
                       <PlatformBadge key={p} platform={p === "GOOGLE" ? "YOUTUBE" : "INSTAGRAM"} />
                     ))}
-                    <span className="rounded-md bg-white/5 px-1.5 py-0.5 text-xs text-muted-foreground">
+                    <span className="rounded-md bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
                       {c.durationDays} days
                     </span>
                   </div>
 
-                  <div className="mt-4 grid grid-cols-3 gap-2 border-t border-white/5 pt-4 text-center">
+                  <div className="mt-4 grid grid-cols-3 gap-2 border-t border-border pt-4 text-center">
                     <div>
                       <p className="text-sm font-semibold">{formatCompact(c.totals.impressions)}</p>
                       <p className="text-xs text-muted-foreground">Impressions</p>
@@ -100,7 +100,7 @@ export default async function CampaignsPage() {
                       </div>
                       <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-muted">
                         <div
-                          className="h-full bg-gradient-to-r from-violet-500 to-fuchsia-500"
+                          className="h-full bg-primary"
                           style={{ width: `${pct}%` }}
                         />
                       </div>

@@ -38,7 +38,7 @@ export function BookingAdminActions({
   if (status === "PENDING") {
     return (
       <div className="flex flex-wrap justify-end gap-2">
-        <Button size="sm" variant="gradient" onClick={() => update("ACCEPTED", "Request accepted")} disabled={!!loading}>
+        <Button size="sm" variant="default" onClick={() => update("ACCEPTED", "Request accepted")} disabled={!!loading}>
           {busy("ACCEPTED") ? <Loader2 className="size-3.5 animate-spin" /> : <Check className="size-3.5" />}
           Accept
         </Button>

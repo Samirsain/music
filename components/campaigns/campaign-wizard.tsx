@@ -156,9 +156,9 @@ export function CampaignWizard({ defaultArtist }: { defaultArtist: string }) {
               <div
                 className={cn(
                   "flex size-9 items-center justify-center rounded-full border text-sm font-medium transition-colors",
-                  i < step && "border-fuchsia-500 bg-fuchsia-500 text-white",
-                  i === step && "border-fuchsia-500 bg-fuchsia-500/10 text-fuchsia-300",
-                  i > step && "border-white/10 text-muted-foreground"
+                  i < step && "border-primary bg-primary text-primary-foreground",
+                  i === step && "border-primary bg-primary/5 text-primary",
+                  i > step && "border-border text-muted-foreground"
                 )}
               >
                 {i < step ? <Check className="size-4" /> : <s.icon className="size-4" />}
@@ -168,13 +168,13 @@ export function CampaignWizard({ defaultArtist }: { defaultArtist: string }) {
               </span>
             </div>
             {i < STEPS.length - 1 && (
-              <div className={cn("mx-2 h-px flex-1 transition-colors", i < step ? "bg-fuchsia-500" : "bg-white/10")} />
+              <div className={cn("mx-2 h-px flex-1 transition-colors", i < step ? "bg-primary" : "bg-border")} />
             )}
           </div>
         ))}
       </div>
 
-      <div className="rounded-2xl border border-white/10 bg-card/50 p-6 sm:p-8">
+      <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
         <AnimatePresence mode="wait">
           <motion.div
             key={step}
@@ -245,13 +245,13 @@ export function CampaignWizard({ defaultArtist }: { defaultArtist: string }) {
                       onClick={() => setGoal(g.id)}
                       className={cn(
                         "flex items-start gap-3 rounded-xl border p-4 text-left transition-colors",
-                        goal === g.id ? "border-fuchsia-500 bg-fuchsia-500/10" : "border-white/10 hover:border-white/20"
+                        goal === g.id ? "border-primary bg-primary/5" : "border-border hover:border-primary/30"
                       )}
                     >
                       <div
                         className={cn(
                           "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border",
-                          goal === g.id ? "border-fuchsia-500 bg-fuchsia-500" : "border-white/20"
+                          goal === g.id ? "border-primary bg-primary" : "border-input"
                         )}
                       >
                         {goal === g.id && <Check className="size-3 text-white" />}
@@ -275,7 +275,7 @@ export function CampaignWizard({ defaultArtist }: { defaultArtist: string }) {
                 <div className="space-y-4">
                   <div className="flex items-end justify-between">
                     <Label>Daily budget</Label>
-                    <span className="text-2xl font-bold text-gradient">{formatINR(dailyBudget)}</span>
+                    <span className="text-2xl font-semibold text-primary">{formatINR(dailyBudget)}</span>
                   </div>
                   <Slider
                     value={[dailyBudget]}
@@ -300,7 +300,7 @@ export function CampaignWizard({ defaultArtist }: { defaultArtist: string }) {
                         onClick={() => setDurationDays(d)}
                         className={cn(
                           "rounded-xl border p-4 text-center transition-colors",
-                          durationDays === d ? "border-fuchsia-500 bg-fuchsia-500/10" : "border-white/10 hover:border-white/20"
+                          durationDays === d ? "border-primary bg-primary/5" : "border-border hover:border-primary/30"
                         )}
                       >
                         <div className="text-lg font-bold">{d}</div>
@@ -310,7 +310,7 @@ export function CampaignWizard({ defaultArtist }: { defaultArtist: string }) {
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-white/10 bg-background/40 p-4">
+                <div className="rounded-xl border border-border bg-muted/40 p-4">
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Ad budget ({durationDays} days)</span>
                     <span>{formatINR(totalBudget)}</span>
@@ -319,9 +319,9 @@ export function CampaignWizard({ defaultArtist }: { defaultArtist: string }) {
                     <span className="text-muted-foreground">Platform fee (10%)</span>
                     <span>{formatINR(serviceFee)}</span>
                   </div>
-                  <div className="mt-3 flex justify-between border-t border-white/5 pt-3 font-semibold">
+                  <div className="mt-3 flex justify-between border-t border-border pt-3 font-semibold">
                     <span>Total</span>
-                    <span className="text-gradient">{formatINR(totalAmount)}</span>
+                    <span className="text-primary">{formatINR(totalAmount)}</span>
                   </div>
                 </div>
               </div>
@@ -341,10 +341,10 @@ export function CampaignWizard({ defaultArtist }: { defaultArtist: string }) {
                     onClick={() => setAllIndia(true)}
                     className={cn(
                       "flex w-full items-center gap-3 rounded-xl border p-3 text-left transition-colors",
-                      allIndia ? "border-fuchsia-500 bg-fuchsia-500/10" : "border-white/10 hover:border-white/20"
+                      allIndia ? "border-primary bg-primary/5" : "border-border hover:border-primary/30"
                     )}
                   >
-                    <div className={cn("flex size-5 items-center justify-center rounded-full border", allIndia ? "border-fuchsia-500 bg-fuchsia-500" : "border-white/20")}>
+                    <div className={cn("flex size-5 items-center justify-center rounded-full border", allIndia ? "border-primary bg-primary" : "border-input")}>
                       {allIndia && <Check className="size-3 text-white" />}
                     </div>
                     <span className="font-medium">All India</span>
@@ -354,10 +354,10 @@ export function CampaignWizard({ defaultArtist }: { defaultArtist: string }) {
                     onClick={() => setAllIndia(false)}
                     className={cn(
                       "flex w-full items-center gap-3 rounded-xl border p-3 text-left transition-colors",
-                      !allIndia ? "border-fuchsia-500 bg-fuchsia-500/10" : "border-white/10 hover:border-white/20"
+                      !allIndia ? "border-primary bg-primary/5" : "border-border hover:border-primary/30"
                     )}
                   >
-                    <div className={cn("flex size-5 items-center justify-center rounded-full border", !allIndia ? "border-fuchsia-500 bg-fuchsia-500" : "border-white/20")}>
+                    <div className={cn("flex size-5 items-center justify-center rounded-full border", !allIndia ? "border-primary bg-primary" : "border-input")}>
                       {!allIndia && <Check className="size-3 text-white" />}
                     </div>
                     <span className="font-medium">Specific states</span>
@@ -373,8 +373,8 @@ export function CampaignWizard({ defaultArtist }: { defaultArtist: string }) {
                           className={cn(
                             "rounded-full border px-3 py-1.5 text-sm transition-colors",
                             states.includes(s)
-                              ? "border-fuchsia-500 bg-fuchsia-500/15 text-fuchsia-200"
-                              : "border-white/10 text-muted-foreground hover:border-white/20"
+                              ? "border-primary bg-primary/10 text-primary"
+                              : "border-border text-muted-foreground hover:border-primary/30"
                           )}
                         >
                           {s}
@@ -415,7 +415,7 @@ export function CampaignWizard({ defaultArtist }: { defaultArtist: string }) {
                   <p className="text-sm text-muted-foreground">One last look before your campaign goes live.</p>
                 </div>
 
-                <div className="space-y-3 rounded-xl border border-white/10 bg-background/40 p-4 text-sm">
+                <div className="space-y-3 rounded-xl border border-border bg-muted/40 p-4 text-sm">
                   <Row label="Song" value={songName} />
                   <Row label="Artist" value={artistName} />
                   <Row label="Genre" value={genre} />
@@ -436,7 +436,7 @@ export function CampaignWizard({ defaultArtist }: { defaultArtist: string }) {
                         onClick={() => setMethod(m)}
                         className={cn(
                           "rounded-xl border p-3 text-center text-sm font-medium transition-colors",
-                          method === m ? "border-fuchsia-500 bg-fuchsia-500/10" : "border-white/10 hover:border-white/20"
+                          method === m ? "border-primary bg-primary/5" : "border-border hover:border-primary/30"
                         )}
                       >
                         {m === "NETBANKING" ? "Net Banking" : m === "CARD" ? "Card" : "UPI"}
@@ -448,7 +448,7 @@ export function CampaignWizard({ defaultArtist }: { defaultArtist: string }) {
                   </p>
                 </div>
 
-                <div className="rounded-xl border border-fuchsia-500/30 bg-fuchsia-500/5 p-4">
+                <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Ad budget</span>
                     <span>{formatINR(totalBudget)}</span>
@@ -457,9 +457,9 @@ export function CampaignWizard({ defaultArtist }: { defaultArtist: string }) {
                     <span className="text-muted-foreground">Platform fee</span>
                     <span>{formatINR(serviceFee)}</span>
                   </div>
-                  <div className="mt-3 flex items-center justify-between border-t border-white/10 pt-3">
+                  <div className="mt-3 flex items-center justify-between border-t border-border pt-3">
                     <span className="font-semibold">Total payable</span>
-                    <span className="text-xl font-bold text-gradient">{formatINR(totalAmount)}</span>
+                    <span className="text-xl font-semibold text-primary">{formatINR(totalAmount)}</span>
                   </div>
                 </div>
               </div>
@@ -472,11 +472,11 @@ export function CampaignWizard({ defaultArtist }: { defaultArtist: string }) {
             <ArrowLeft className="size-4" /> Back
           </Button>
           {step < 4 ? (
-            <Button variant="gradient" onClick={next} disabled={!stepValid}>
+            <Button variant="default" onClick={next} disabled={!stepValid}>
               Continue <ArrowRight className="size-4" />
             </Button>
           ) : (
-            <Button variant="gradient" onClick={submitAndPay} disabled={submitting}>
+            <Button variant="default" onClick={submitAndPay} disabled={submitting}>
               {submitting && <Loader2 className="size-4 animate-spin" />}
               Pay {formatINR(totalAmount)}
             </Button>

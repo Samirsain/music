@@ -15,14 +15,14 @@ export function EmptyState({
   actionHref?: string;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-white/10 bg-card/30 px-6 py-16 text-center">
-      <div className="flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600/20 to-fuchsia-600/20">
-        <Icon className="size-6 text-fuchsia-300" />
+    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-card px-6 py-16 text-center">
+      <div className="flex size-14 items-center justify-center rounded-2xl bg-primary/10">
+        <Icon className="size-6 text-primary" />
       </div>
       <h3 className="mt-4 text-lg font-semibold">{title}</h3>
       <p className="mt-1 max-w-sm text-sm text-muted-foreground">{description}</p>
       {actionLabel && actionHref && (
-        <Button variant="gradient" className="mt-6" asChild>
+        <Button variant="default" className="mt-6" asChild>
           <Link href={actionHref}>{actionLabel}</Link>
         </Button>
       )}

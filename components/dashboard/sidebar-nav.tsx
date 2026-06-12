@@ -26,11 +26,11 @@ export function SidebarNav({ items, onNavigate }: { items: NavItem[]; onNavigate
             className={cn(
               "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
               active
-                ? "bg-gradient-to-r from-violet-600/20 to-fuchsia-600/10 text-foreground"
+                ? "bg-accent text-foreground"
                 : "text-muted-foreground hover:bg-accent hover:text-foreground"
             )}
           >
-            <item.icon className={cn("size-4", active && "text-fuchsia-400")} />
+            <item.icon className={cn("size-4", active && "text-primary")} />
             {item.label}
           </Link>
         );

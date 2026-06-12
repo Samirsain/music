@@ -210,8 +210,8 @@ export function InfluencerForm({
                   className={cn(
                     "rounded-full border px-3 py-1.5 text-sm transition-colors",
                     platforms.includes(p.id)
-                      ? "border-fuchsia-500 bg-fuchsia-500/15 text-fuchsia-200"
-                      : "border-white/10 text-muted-foreground hover:border-white/20"
+                      ? "border-primary bg-primary/10 text-primary"
+                      : "border-border text-muted-foreground hover:border-primary/30"
                   )}
                 >
                   {p.label}
@@ -245,7 +245,7 @@ export function InfluencerForm({
           </div>
 
           {/* Services */}
-          <div className="space-y-3 rounded-xl border border-white/10 p-4">
+          <div className="space-y-3 rounded-xl border border-border p-4">
             <div className="flex items-center justify-between">
               <Label className="text-base">Services &amp; charges</Label>
               <Button type="button" size="sm" variant="outline" onClick={addService}>
@@ -253,7 +253,7 @@ export function InfluencerForm({
               </Button>
             </div>
             {services.map((s, i) => (
-              <div key={i} className="space-y-3 rounded-lg border border-white/5 bg-background/40 p-3">
+              <div key={i} className="space-y-3 rounded-lg border border-border bg-muted/40 p-3">
                 <div className="flex items-center justify-between gap-2">
                   <Input
                     value={s.title}
@@ -262,7 +262,7 @@ export function InfluencerForm({
                   />
                   {services.length > 1 && (
                     <Button type="button" size="icon" variant="ghost" onClick={() => removeService(i)}>
-                      <Trash2 className="size-4 text-rose-400" />
+                      <Trash2 className="size-4 text-rose-600" />
                     </Button>
                   )}
                 </div>
@@ -306,7 +306,7 @@ export function InfluencerForm({
           <Button variant="ghost" onClick={() => onOpenChange(false)}>
             Cancel
           </Button>
-          <Button variant="gradient" onClick={save} disabled={loading}>
+          <Button variant="default" onClick={save} disabled={loading}>
             {loading && <Loader2 className="size-4 animate-spin" />}
             {editing ? "Save changes" : "Add influencer"}
           </Button>

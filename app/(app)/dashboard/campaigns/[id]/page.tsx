@@ -68,7 +68,7 @@ export default async function CampaignDetailPage({
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
         <div>
           <div className="flex items-center gap-3">
-            <h2 className="text-2xl font-bold">{campaign.songName}</h2>
+            <h2 className="text-2xl font-semibold">{campaign.songName}</h2>
             <StatusBadge status={status} />
           </div>
           <p className="mt-1 text-muted-foreground">
@@ -83,7 +83,7 @@ export default async function CampaignDetailPage({
                 href={campaign.trackUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 rounded-md bg-white/5 px-2 py-0.5 text-xs text-muted-foreground hover:text-foreground"
+                className="inline-flex items-center gap-1 rounded-md bg-muted px-2 py-0.5 text-xs text-muted-foreground hover:text-foreground"
               >
                 <ExternalLink className="size-3" /> Track link
               </a>
@@ -100,9 +100,9 @@ export default async function CampaignDetailPage({
       </div>
 
       {status === "PENDING_PAYMENT" && (
-        <Card className="border-amber-500/30 bg-amber-500/5">
+        <Card className="border-amber-200 bg-amber-50">
           <CardContent className="flex items-center gap-3 py-4">
-            <Clock className="size-5 text-amber-400" />
+            <Clock className="size-5 text-amber-600" />
             <p className="text-sm">
               This campaign is awaiting payment. Pay {formatINR(campaign.totalAmount)} to send it for review and launch.
             </p>
@@ -111,9 +111,9 @@ export default async function CampaignDetailPage({
       )}
 
       {status === "IN_REVIEW" && (
-        <Card className="border-sky-500/30 bg-sky-500/5">
+        <Card className="border-sky-200 bg-sky-50">
           <CardContent className="flex items-center gap-3 py-4">
-            <Clock className="size-5 text-sky-400" />
+            <Clock className="size-5 text-sky-600" />
             <p className="text-sm">
               Payment received. Our team is reviewing your campaign — it&apos;ll go live within 24 hours.
             </p>
@@ -123,13 +123,13 @@ export default async function CampaignDetailPage({
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard label="Impressions" value={formatCompact(totals.impressions)} icon={Eye} />
-        <StatCard label="Clicks" value={formatCompact(totals.clicks)} icon={MousePointerClick} accent="text-cyan-400" hint={`${ctr}% CTR`} />
-        <StatCard label="Streams / views" value={formatCompact(totals.views)} icon={Activity} accent="text-emerald-400" />
-        <StatCard label="Spent" value={formatINR(totals.spend)} icon={Wallet} accent="text-amber-400" hint={`of ${formatINR(campaign.totalBudget)}`} />
+        <StatCard label="Clicks" value={formatCompact(totals.clicks)} icon={MousePointerClick} accent="text-sky-600" hint={`${ctr}% CTR`} />
+        <StatCard label="Streams / views" value={formatCompact(totals.views)} icon={Activity} accent="text-emerald-600" />
+        <StatCard label="Spent" value={formatINR(totals.spend)} icon={Wallet} accent="text-amber-600" hint={`of ${formatINR(campaign.totalBudget)}`} />
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
-        <Card className="border-white/10 lg:col-span-2">
+        <Card className="border-border lg:col-span-2">
           <CardHeader>
             <CardTitle>Performance over time</CardTitle>
           </CardHeader>
@@ -148,7 +148,7 @@ export default async function CampaignDetailPage({
         </Card>
 
         <div className="space-y-6">
-          <Card className="border-white/10">
+          <Card className="border-border">
             <CardHeader>
               <CardTitle>Campaign details</CardTitle>
             </CardHeader>
@@ -162,7 +162,7 @@ export default async function CampaignDetailPage({
             </CardContent>
           </Card>
 
-          <Card className="border-white/10">
+          <Card className="border-border">
             <CardHeader>
               <CardTitle>Payment</CardTitle>
             </CardHeader>
@@ -175,9 +175,9 @@ export default async function CampaignDetailPage({
                 <span className="text-muted-foreground">Platform fee</span>
                 <span>{formatINR(campaign.serviceFee)}</span>
               </div>
-              <div className="flex justify-between border-t border-white/5 pt-2 font-semibold">
+              <div className="flex justify-between border-t border-border pt-2 font-semibold">
                 <span>Total</span>
-                <span className="text-gradient">{formatINR(campaign.totalAmount)}</span>
+                <span className="text-primary">{formatINR(campaign.totalAmount)}</span>
               </div>
               {campaign.payment && (
                 <p className="flex items-center gap-1.5 pt-2 text-xs text-muted-foreground">
@@ -189,7 +189,7 @@ export default async function CampaignDetailPage({
           </Card>
 
           {status === "LIVE" && (
-            <Card className="border-white/10">
+            <Card className="border-border">
               <CardHeader>
                 <CardTitle>Budget pacing</CardTitle>
               </CardHeader>
@@ -199,7 +199,7 @@ export default async function CampaignDetailPage({
                   <span>{spendPct}%</span>
                 </div>
                 <div className="mt-2 h-2 overflow-hidden rounded-full bg-muted">
-                  <div className="h-full bg-gradient-to-r from-violet-500 to-fuchsia-500" style={{ width: `${spendPct}%` }} />
+                  <div className="h-full bg-primary" style={{ width: `${spendPct}%` }} />
                 </div>
               </CardContent>
             </Card>

@@ -63,24 +63,24 @@ export function InfluencerManager({ initial }: { initial: FullInfluencer[] }) {
     <>
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold">Manage influencers</h2>
+          <h2 className="text-2xl font-semibold">Manage influencers</h2>
           <p className="text-muted-foreground">Add creators, set their categories and charges.</p>
         </div>
-        <Button variant="gradient" onClick={add}>
+        <Button variant="default" onClick={add}>
           <Plus className="size-4" /> Add influencer
         </Button>
       </div>
 
       <div className="mt-6 grid gap-4 md:grid-cols-2">
         {initial.map((inf) => (
-          <Card key={inf.id} className="gap-0 border-white/10 p-5">
+          <Card key={inf.id} className="gap-0 border-border p-5">
             <div className="flex items-start justify-between gap-3">
               <div className="flex gap-3">
                 <GradientAvatar name={inf.name} imageUrl={inf.imageUrl} className="size-12" />
                 <div>
                   <div className="flex items-center gap-2">
                     <h3 className="font-semibold">{inf.name}</h3>
-                    {inf.featured && <BadgeCheck className="size-4 text-violet-400" />}
+                    {inf.featured && <BadgeCheck className="size-4 text-primary" />}
                     {!inf.active && <Badge variant="muted">Hidden</Badge>}
                   </div>
                   <p className="text-sm text-muted-foreground">{inf.handle}</p>
@@ -95,7 +95,7 @@ export function InfluencerManager({ initial }: { initial: FullInfluencer[] }) {
                   <Pencil className="size-4" />
                 </Button>
                 <Button size="icon" variant="ghost" onClick={() => setDeleteTarget(inf)}>
-                  <Trash2 className="size-4 text-rose-400" />
+                  <Trash2 className="size-4 text-rose-600" />
                 </Button>
               </div>
             </div>
@@ -106,7 +106,7 @@ export function InfluencerManager({ initial }: { initial: FullInfluencer[] }) {
               ))}
             </div>
 
-            <div className="mt-4 space-y-1.5 border-t border-white/5 pt-4">
+            <div className="mt-4 space-y-1.5 border-t border-border pt-4">
               {(inf.services ?? []).map((s) => (
                 <div key={s.id} className="flex items-center justify-between text-sm">
                   <span className="flex items-center gap-1.5 text-muted-foreground">

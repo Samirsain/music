@@ -41,8 +41,8 @@ function SectionHeading({
 }) {
   return (
     <FadeIn className="mx-auto mb-12 max-w-2xl text-center">
-      <p className="text-sm font-medium uppercase tracking-wider text-fuchsia-400">{eyebrow}</p>
-      <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
+      <p className="text-sm font-medium uppercase tracking-wider text-primary">{eyebrow}</p>
+      <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
       {subtitle && <p className="mt-4 text-muted-foreground">{subtitle}</p>}
     </FadeIn>
   );
@@ -77,8 +77,8 @@ export function ProblemSection() {
       <div className="grid gap-6 md:grid-cols-3">
         {problems.map((p, i) => (
           <FadeIn key={p.title} delay={i * 0.1}>
-            <div className="h-full rounded-2xl border border-white/10 bg-card/50 p-6">
-              <div className="flex size-11 items-center justify-center rounded-xl bg-rose-500/10 text-rose-400">
+            <div className="h-full rounded-2xl border border-border bg-card p-6">
+              <div className="flex size-11 items-center justify-center rounded-xl bg-rose-50 text-rose-600">
                 <p.icon className="size-5" />
               </div>
               <h3 className="mt-4 font-semibold">{p.title}</h3>
@@ -106,7 +106,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="border-y border-white/5 bg-black/20 py-20">
+    <section id="how-it-works" className="border-y border-border bg-muted/50 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="How it works"
@@ -122,12 +122,12 @@ export function HowItWorks() {
               whileInView="visible"
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-              className="group relative rounded-2xl border border-white/10 bg-card/50 p-6 transition-colors hover:border-fuchsia-500/40"
+              className="group relative rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/40"
             >
-              <span className="absolute right-5 top-5 text-3xl font-bold text-white/5 transition-colors group-hover:text-fuchsia-500/20">
+              <span className="absolute right-5 top-5 text-3xl font-bold text-foreground/5 transition-colors group-hover:text-primary/15">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <div className="flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600/20 to-fuchsia-600/20 text-fuchsia-300">
+              <div className="flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
                 <s.icon className="size-5" />
               </div>
               <h3 className="mt-4 font-semibold">{s.title}</h3>
@@ -168,9 +168,9 @@ export function FeaturesSection() {
             whileInView="visible"
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: (i % 4) * 0.07 }}
-            className="rounded-2xl border border-white/10 bg-card/50 p-5"
+            className="rounded-2xl border border-border bg-card p-5"
           >
-            <f.icon className="size-6 text-fuchsia-400" />
+            <f.icon className="size-6 text-primary" />
             <h3 className="mt-3 text-sm font-semibold">{f.title}</h3>
             <p className="mt-1.5 text-sm text-muted-foreground">{f.text}</p>
           </motion.div>
@@ -184,39 +184,38 @@ export function InfluencerCta() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
       <FadeIn>
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-violet-950/40 via-card to-fuchsia-950/30 p-8 sm:p-12">
-          <div className="hero-glow absolute inset-0 -z-10 opacity-60" />
-          <div className="grid items-center gap-8 lg:grid-cols-2">
+        <div className="overflow-hidden rounded-2xl border border-border bg-violet-50/60 p-8 sm:p-12">
+          <div className="grid items-center gap-10 lg:grid-cols-2">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted-foreground">
-                <Megaphone className="size-3.5 text-fuchsia-400" /> Influencer marketplace
+              <div className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-3 py-1 text-xs font-medium text-violet-700">
+                <Megaphone className="size-3.5" /> Influencer marketplace
               </div>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                Hire India&apos;s top music influencers
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+                Book music influencers, with prices upfront
               </h2>
               <p className="mt-4 text-muted-foreground">
-                Beyond ads — get your track on the right reels, playlists and reaction
-                videos. Browse curators by genre, see their exact charges per service, and
-                book in minutes. From Bollywood to Lo-fi, Punjabi to Devotional.
+                Get your track on the right reels, playlists and reaction videos. Browse
+                creators by genre — Bollywood to Lo-fi, Punjabi to Devotional — see exactly
+                what each service costs, and book in a few clicks.
               </p>
-              <div className="mt-6 flex flex-wrap gap-4">
+              <div className="mt-6 flex flex-wrap gap-5">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Users className="size-4 text-fuchsia-400" /> 500+ verified creators
+                  <Users className="size-4 text-violet-600" /> Curated, verified creators
                 </div>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <CheckCircle2 className="size-4 text-emerald-400" /> Transparent pricing
+                  <CheckCircle2 className="size-4 text-emerald-600" /> Fixed per-service pricing
                 </div>
               </div>
-              <Button size="lg" variant="gradient" className="mt-8" asChild>
+              <Button size="lg" className="mt-8" asChild>
                 <Link href="/influencers">Explore the marketplace</Link>
               </Button>
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { cat: "Bollywood", price: "₹8K", reach: "1.2M reach" },
-                { cat: "Punjabi", price: "₹6K", reach: "920K reach" },
-                { cat: "Hip-Hop", price: "₹12K", reach: "640K reach" },
-                { cat: "Playlist", price: "₹6K", reach: "400K reach" },
+                { cat: "Bollywood reels", price: "₹8,000" },
+                { cat: "Punjabi shoutouts", price: "₹6,000" },
+                { cat: "Hip-Hop reviews", price: "₹11,000" },
+                { cat: "Playlist placements", price: "₹6,000" },
               ].map((c, i) => (
                 <motion.div
                   key={c.cat}
@@ -224,13 +223,12 @@ export function InfluencerCta() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="rounded-2xl border border-white/10 bg-background/60 p-5 backdrop-blur"
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="rounded-xl border border-border bg-card p-5 shadow-xs"
                 >
-                  <div className="text-xs text-muted-foreground">{c.reach}</div>
-                  <div className="mt-1 font-semibold">{c.cat}</div>
-                  <div className="mt-3 text-sm text-muted-foreground">from</div>
-                  <div className="text-xl font-bold text-gradient">{c.price}</div>
+                  <div className="font-medium">{c.cat}</div>
+                  <div className="mt-3 text-xs text-muted-foreground">from</div>
+                  <div className="text-xl font-semibold text-primary">{c.price}</div>
                 </motion.div>
               ))}
             </div>
@@ -261,7 +259,7 @@ const phases = [
 
 export function RoadmapSection() {
   return (
-    <section className="border-y border-white/5 bg-black/20 py-20">
+    <section className="border-y border-border bg-muted/50 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Roadmap"
@@ -271,13 +269,13 @@ export function RoadmapSection() {
         <div className="grid gap-6 md:grid-cols-3">
           {phases.map((p, i) => (
             <FadeIn key={p.name} delay={i * 0.1}>
-              <div className="h-full rounded-2xl border border-white/10 bg-card/50 p-6">
+              <div className="h-full rounded-2xl border border-border bg-card p-6">
                 <div className="flex items-center justify-between">
-                  <span className="rounded-full bg-fuchsia-500/10 px-3 py-1 text-xs font-medium text-fuchsia-300">
+                  <span className="rounded-full bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
                     {p.weeks}
                   </span>
                   {i === 0 && (
-                    <span className="rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
+                    <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-600">
                       Live now
                     </span>
                   )}
@@ -286,7 +284,7 @@ export function RoadmapSection() {
                 <ul className="mt-4 space-y-2.5">
                   {p.items.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-emerald-400" />
+                      <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-emerald-600" />
                       {item}
                     </li>
                   ))}
@@ -321,9 +319,9 @@ export function AudienceSection() {
             whileInView="visible"
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="rounded-2xl border border-white/10 bg-card/50 p-5 text-center"
+            className="rounded-2xl border border-border bg-card p-5 text-center"
           >
-            <div className="mx-auto flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600/20 to-fuchsia-600/20 text-fuchsia-300">
+            <div className="mx-auto flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <a.icon className="size-5" />
             </div>
             <h3 className="mt-3 text-sm font-semibold">{a.label}</h3>
@@ -339,22 +337,22 @@ export function FinalCta() {
   return (
     <section className="mx-auto max-w-7xl px-4 pb-24 sm:px-6">
       <FadeIn>
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-violet-600 to-fuchsia-600 px-8 py-16 text-center">
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        <div className="overflow-hidden rounded-2xl bg-zinc-900 px-8 py-16 text-center">
+          <h2 className="text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             Your next release deserves an audience
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-balance text-white/80">
-            Join thousands of Indian artists growing their streams, views and fanbase with
-            AmpliTune. Set up your first campaign in under five minutes.
+          <p className="mx-auto mt-4 max-w-xl text-balance text-zinc-400">
+            Create a free account, set up your first campaign in a few minutes, and track
+            every rupee from your dashboard.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button size="lg" variant="secondary" asChild>
+            <Button size="lg" asChild>
               <Link href="/signup">Create your free account</Link>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
+              className="border-zinc-700 bg-transparent text-white hover:bg-zinc-800 hover:text-white"
               asChild
             >
               <Link href="/influencers">Browse influencers</Link>

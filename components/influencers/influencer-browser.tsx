@@ -59,14 +59,14 @@ export function InfluencerBrowser({ initial }: { initial: Influencer[] }) {
 
   return (
     <div>
-      <div className="sticky top-16 z-30 -mx-4 mb-8 border-b border-white/5 bg-background/80 px-4 py-4 backdrop-blur-xl sm:mx-0 sm:rounded-2xl sm:border sm:border-white/10 sm:bg-card/50 sm:px-5">
+      <div className="sticky top-16 z-30 -mx-4 mb-8 border-b border-border bg-background/90 px-4 py-4 backdrop-blur sm:mx-0 sm:rounded-2xl sm:border sm:border-border sm:bg-card sm:px-5">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              placeholder="Search by name, handle or vibe…"
+              placeholder="Search influencers…"
               className="pl-9"
             />
           </div>
@@ -120,7 +120,7 @@ export function InfluencerBrowser({ initial }: { initial: Influencer[] }) {
           ))}
         </div>
       ) : influencers.length === 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-white/10 py-20 text-center">
+        <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border py-20 text-center">
           <Users2 className="size-10 text-muted-foreground" />
           <p className="mt-4 font-medium">No influencers match your filters</p>
           <p className="mt-1 text-sm text-muted-foreground">Try a different category or clear your search.</p>

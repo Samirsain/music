@@ -23,7 +23,7 @@ const COLUMNS = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-white/5 bg-black/20">
+    <footer className="border-t border-border bg-muted/50">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
         <div className="md:col-span-2">
           <Logo />
@@ -33,7 +33,7 @@ export function SiteFooter() {
             technical headache.
           </p>
           <p className="mt-4 text-xs text-muted-foreground">
-            Payments powered by Razorpay · Reports on WhatsApp & email
+            Payments via Razorpay · Campaign reports on WhatsApp and email
           </p>
         </div>
         {COLUMNS.map((col) => (
@@ -54,9 +54,9 @@ export function SiteFooter() {
           </div>
         ))}
       </div>
-      <div className="border-t border-white/5 py-6">
+      <div className="border-t border-border py-6">
         <p className="text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} AmpliTune · Built by Zenviq Digital · Made in India 🇮🇳
+          © {new Date().getFullYear()} AmpliTune. All rights reserved.
         </p>
       </div>
     </footer>

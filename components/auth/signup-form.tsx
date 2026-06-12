@@ -38,7 +38,7 @@ export function SignupForm() {
           genre,
         },
       });
-      toast.success("Account created! Welcome to AmpliTune 🎉");
+      toast.success("Account created — welcome to AmpliTune");
       router.push("/dashboard");
       router.refresh();
     } catch (err) {
@@ -88,7 +88,7 @@ export function SignupForm() {
         <Label htmlFor="password">Password</Label>
         <Input id="password" name="password" type="password" placeholder="At least 6 characters" required autoComplete="new-password" />
       </div>
-      <Button type="submit" variant="gradient" className="w-full" disabled={loading}>
+      <Button type="submit" variant="default" className="w-full" disabled={loading}>
         {loading && <Loader2 className="size-4 animate-spin" />}
         Create account
       </Button>

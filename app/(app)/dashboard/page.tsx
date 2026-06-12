@@ -6,7 +6,7 @@ import {
   MousePointerClick,
   Megaphone,
   Plus,
-  Sparkles,
+  Handshake,
   Wallet,
 } from "lucide-react";
 import { prisma } from "@/lib/db";
@@ -57,10 +57,10 @@ export default async function DashboardPage() {
     <div className="space-y-6">
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <div>
-          <h2 className="text-2xl font-bold">Welcome back, {firstName} 👋</h2>
+          <h2 className="text-2xl font-semibold">Welcome back, {firstName}</h2>
           <p className="text-muted-foreground">Here&apos;s how your music is performing.</p>
         </div>
-        <Button variant="gradient" asChild>
+        <Button variant="default" asChild>
           <Link href="/dashboard/campaigns/new">
             <Plus className="size-4" /> New campaign
           </Link>
@@ -69,13 +69,13 @@ export default async function DashboardPage() {
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard label="Total impressions" value={formatCompact(impressions)} icon={Eye} hint={`${liveCount} campaign(s) live`} />
-        <StatCard label="Total clicks" value={formatCompact(clicks)} icon={MousePointerClick} accent="text-cyan-400" />
-        <StatCard label="Streams / views" value={formatCompact(views)} icon={Activity} accent="text-emerald-400" />
-        <StatCard label="Total ad spend" value={formatINR(spend)} icon={Wallet} accent="text-amber-400" />
+        <StatCard label="Total clicks" value={formatCompact(clicks)} icon={MousePointerClick} accent="text-sky-600" />
+        <StatCard label="Streams / views" value={formatCompact(views)} icon={Activity} accent="text-emerald-600" />
+        <StatCard label="Total ad spend" value={formatINR(spend)} icon={Wallet} accent="text-amber-600" />
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
-        <Card className="border-white/10 lg:col-span-2">
+        <Card className="border-border lg:col-span-2">
           <CardHeader className="flex-row items-center justify-between">
             <CardTitle>Recent campaigns</CardTitle>
             <Button variant="ghost" size="sm" asChild>
@@ -99,7 +99,7 @@ export default async function DashboardPage() {
                   <Link
                     key={c.id}
                     href={`/dashboard/campaigns/${c.id}`}
-                    className="flex items-center justify-between gap-4 rounded-xl border border-white/5 bg-background/40 p-4 transition-colors hover:border-fuchsia-500/30"
+                    className="flex items-center justify-between gap-4 rounded-xl border border-border bg-muted/40 p-4 transition-colors hover:border-primary/30"
                   >
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
@@ -121,16 +121,16 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="border-white/10">
+        <Card className="border-border">
           <CardHeader>
             <CardTitle>Quick actions</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <Link
               href="/dashboard/campaigns/new"
-              className="flex items-center gap-3 rounded-xl border border-white/5 bg-background/40 p-4 transition-colors hover:border-fuchsia-500/30"
+              className="flex items-center gap-3 rounded-xl border border-border bg-muted/40 p-4 transition-colors hover:border-primary/30"
             >
-              <div className="flex size-10 items-center justify-center rounded-lg bg-fuchsia-500/15 text-fuchsia-400">
+              <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
                 <Megaphone className="size-5" />
               </div>
               <div>
@@ -140,17 +140,17 @@ export default async function DashboardPage() {
             </Link>
             <Link
               href="/influencers"
-              className="flex items-center gap-3 rounded-xl border border-white/5 bg-background/40 p-4 transition-colors hover:border-fuchsia-500/30"
+              className="flex items-center gap-3 rounded-xl border border-border bg-muted/40 p-4 transition-colors hover:border-primary/30"
             >
-              <div className="flex size-10 items-center justify-center rounded-lg bg-violet-500/15 text-violet-400">
-                <Sparkles className="size-5" />
+              <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <Handshake className="size-5" />
               </div>
               <div>
                 <p className="text-sm font-medium">Hire an influencer</p>
                 <p className="text-xs text-muted-foreground">{bookingsCount} active hire(s)</p>
               </div>
             </Link>
-            <div className="rounded-xl border border-white/5 bg-background/40 p-4">
+            <div className="rounded-xl border border-border bg-muted/40 p-4">
               <p className="text-xs text-muted-foreground">Connected ad platforms</p>
               <div className="mt-2 flex gap-2">
                 <PlatformBadge platform="YOUTUBE" />

@@ -18,8 +18,8 @@ export function InfluencerCard({ influencer, index = 0 }: { influencer: Influenc
       transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.4) }}
     >
       <Link href={`/influencers/${influencer.id}`} className="group block h-full">
-        <Card className="h-full gap-0 overflow-hidden border-white/10 py-0 transition-all hover:border-fuchsia-500/40 hover:shadow-lg hover:shadow-fuchsia-950/20">
-          <div className="relative h-20 bg-gradient-to-br from-violet-600/30 via-fuchsia-600/20 to-cyan-600/20">
+        <Card className="h-full gap-0 overflow-hidden border-border py-0 transition-all hover:border-primary/40 hover:shadow-md">
+          <div className="relative h-20 bg-gradient-to-br from-violet-100 via-violet-50 to-sky-100">
             {influencer.featured && (
               <Badge variant="violet" className="absolute right-3 top-3 gap-1">
                 <BadgeCheck className="size-3" /> Featured
@@ -51,7 +51,7 @@ export function InfluencerCard({ influencer, index = 0 }: { influencer: Influenc
 
             <div className="mt-4 flex items-center gap-4 text-xs text-muted-foreground">
               <span className="flex items-center gap-1">
-                <TrendingUp className="size-3.5 text-fuchsia-400" />
+                <TrendingUp className="size-3.5 text-primary" />
                 {formatCompact(influencer.followers)} followers
               </span>
               <span>{influencer.engagementRate.toFixed(1)}% eng.</span>
@@ -63,12 +63,12 @@ export function InfluencerCard({ influencer, index = 0 }: { influencer: Influenc
               )}
             </div>
 
-            <div className="mt-4 flex items-center justify-between border-t border-white/5 pt-4">
+            <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
               <div>
                 <span className="text-xs text-muted-foreground">Starting at</span>
-                <div className="font-semibold text-gradient">{formatINR(influencer.startingPrice)}</div>
+                <div className="font-semibold text-primary">{formatINR(influencer.startingPrice)}</div>
               </div>
-              <span className="rounded-lg bg-white/5 px-3 py-1.5 text-xs font-medium text-fuchsia-300 transition-colors group-hover:bg-fuchsia-500/15">
+              <span className="rounded-lg bg-muted px-3 py-1.5 text-xs font-medium text-primary transition-colors group-hover:bg-primary/10">
                 View &amp; hire →
               </span>
             </div>

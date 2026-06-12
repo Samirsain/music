@@ -79,7 +79,7 @@ export function BookingsList({ initial }: { initial: Booking[] }) {
     <>
       <div className="space-y-4">
         {bookings.map((b) => (
-          <Card key={b.id} className="gap-0 border-white/10 p-5">
+          <Card key={b.id} className="gap-0 border-border p-5">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div className="flex gap-4">
                 <GradientAvatar
@@ -103,7 +103,7 @@ export function BookingsList({ initial }: { initial: Booking[] }) {
                     For <span className="text-foreground">{b.songName}</span> · requested {formatDate(b.createdAt)}
                   </p>
                   {b.message && (
-                    <p className="mt-2 rounded-lg bg-white/[0.03] p-2 text-xs text-muted-foreground">
+                    <p className="mt-2 rounded-lg bg-muted/60 p-2 text-xs text-muted-foreground">
                       “{b.message}”
                     </p>
                   )}
@@ -111,12 +111,12 @@ export function BookingsList({ initial }: { initial: Booking[] }) {
               </div>
 
               <div className="flex flex-col items-end gap-2">
-                <span className="text-lg font-bold text-gradient">{formatINR(b.amount)}</span>
+                <span className="text-lg font-semibold text-primary">{formatINR(b.amount)}</span>
                 <div className="flex gap-2">
                   {b.paymentStatus === "UNPAID" &&
                     b.status !== "CANCELLED" &&
                     b.status !== "REJECTED" && (
-                      <Button size="sm" variant="gradient" onClick={() => setPayTarget(b)}>
+                      <Button size="sm" variant="default" onClick={() => setPayTarget(b)}>
                         Pay now
                       </Button>
                     )}
@@ -139,7 +139,7 @@ export function BookingsList({ initial }: { initial: Booking[] }) {
                 {b.paymentStatus === "UNPAID" &&
                   b.status !== "CANCELLED" &&
                   b.status !== "REJECTED" && (
-                    <span className="flex items-center gap-1 text-xs text-amber-400">
+                    <span className="flex items-center gap-1 text-xs text-amber-600">
                       <Clock className="size-3" /> Payment pending
                     </span>
                   )}
@@ -166,7 +166,7 @@ export function BookingsList({ initial }: { initial: Booking[] }) {
                 onClick={() => setMethod(m)}
                 className={cn(
                   "rounded-xl border p-3 text-center text-sm font-medium transition-colors",
-                  method === m ? "border-fuchsia-500 bg-fuchsia-500/10" : "border-white/10 hover:border-white/20"
+                  method === m ? "border-primary bg-primary/5" : "border-border hover:border-primary/30"
                 )}
               >
                 {m === "NETBANKING" ? "Net Banking" : m === "CARD" ? "Card" : "UPI"}
@@ -180,7 +180,7 @@ export function BookingsList({ initial }: { initial: Booking[] }) {
             <Button variant="ghost" onClick={() => setPayTarget(null)}>
               Cancel
             </Button>
-            <Button variant="gradient" onClick={pay} disabled={loading}>
+            <Button variant="default" onClick={pay} disabled={loading}>
               {loading && <Loader2 className="size-4 animate-spin" />}
               Pay {payTarget && formatINR(payTarget.amount)}
             </Button>

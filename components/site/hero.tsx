@@ -2,72 +2,79 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Play, Sparkles } from "lucide-react";
+import { ArrowRight, BarChart3, IndianRupee, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const stats = [
-  { value: "10K+", label: "Campaigns run" },
-  { value: "₹2.4Cr+", label: "Ad spend managed" },
-  { value: "500+", label: "Music influencers" },
-  { value: "4.8/5", label: "Artist rating" },
+const highlights = [
+  {
+    icon: BarChart3,
+    title: "Set up in minutes",
+    text: "Pick a goal, set a budget — we handle targeting and ad setup.",
+  },
+  {
+    icon: IndianRupee,
+    title: "Start from ₹200/day",
+    text: "Pay per campaign with UPI or card. No retainers, no lock-in.",
+  },
+  {
+    icon: MessageCircle,
+    title: "Reports on WhatsApp",
+    text: "Plain-language results — impressions, clicks and streams.",
+  },
 ];
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden border-b border-border">
       <div className="hero-glow absolute inset-0 -z-10" />
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,transparent_0%,var(--background)_75%)]" />
 
-      <div className="mx-auto max-w-7xl px-4 pt-20 pb-16 sm:px-6 sm:pt-28">
+      <div className="mx-auto max-w-7xl px-4 pt-16 pb-14 sm:px-6 sm:pt-24 sm:pb-20">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="mx-auto max-w-3xl text-center"
         >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-muted-foreground">
-            <Sparkles className="size-3.5 text-fuchsia-400" />
-            Built for independent Indian artists, labels & creators
-          </div>
+          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-sm text-muted-foreground shadow-xs">
+            For independent artists, labels &amp; creators in India
+          </p>
 
-          <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-6xl">
-            Promote your music like a <span className="text-gradient">pro</span> —
-            without the guesswork
+          <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-6xl">
+            Get your music heard, <span className="text-primary">without learning ads</span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-balance text-lg text-muted-foreground">
-            Run Google &amp; Meta Ads and collaborate with India&apos;s top music
-            influencers from one simple dashboard. You pick the goal — we handle the
-            targeting, the setup, and the reporting.
+          <p className="mx-auto mt-5 max-w-2xl text-balance text-lg text-muted-foreground">
+            Run YouTube, Instagram and Spotify promotions, and book music influencers for
+            reels and playlists — all from one simple dashboard. You pick the goal; we do
+            the targeting, setup and reporting.
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button size="lg" variant="gradient" asChild>
+            <Button size="lg" asChild>
               <Link href="/signup">
-                Start promoting <ArrowRight className="size-4" />
+                Start a campaign <ArrowRight className="size-4" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link href="/influencers">
-                <Play className="size-4" /> Browse influencers
-              </Link>
+              <Link href="/influencers">Browse influencers</Link>
             </Button>
           </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25 }}
-          className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-4"
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mx-auto mt-14 grid max-w-4xl gap-4 sm:grid-cols-3"
         >
-          {stats.map((s) => (
+          {highlights.map((h) => (
             <div
-              key={s.label}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center backdrop-blur"
+              key={h.title}
+              className="rounded-xl border border-border bg-card p-5 text-left shadow-xs"
             >
-              <div className="text-2xl font-bold text-gradient sm:text-3xl">{s.value}</div>
-              <div className="mt-1 text-xs text-muted-foreground sm:text-sm">{s.label}</div>
+              <h.icon className="size-5 text-primary" />
+              <div className="mt-3 font-medium">{h.title}</div>
+              <p className="mt-1 text-sm text-muted-foreground">{h.text}</p>
             </div>
           ))}
         </motion.div>

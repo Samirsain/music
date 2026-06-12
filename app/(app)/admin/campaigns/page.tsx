@@ -51,7 +51,7 @@ export default async function AdminCampaignsPage({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold">All campaigns</h2>
+        <h2 className="text-2xl font-semibold">All campaigns</h2>
         <p className="text-muted-foreground">Review, launch and manage every client campaign.</p>
       </div>
 
@@ -65,8 +65,8 @@ export default async function AdminCampaignsPage({
               className={cn(
                 "rounded-full border px-3 py-1.5 text-sm transition-colors",
                 isActive
-                  ? "border-fuchsia-500 bg-fuchsia-500/15 text-fuchsia-200"
-                  : "border-white/10 text-muted-foreground hover:border-white/20"
+                  ? "border-primary bg-primary/10 text-primary"
+                  : "border-border text-muted-foreground hover:border-primary/30"
               )}
             >
               {f.label}
@@ -75,7 +75,7 @@ export default async function AdminCampaignsPage({
         })}
       </div>
 
-      <Card className="border-white/10 py-0">
+      <Card className="border-border py-0">
         <CardContent className="px-0">
           {campaigns.length === 0 ? (
             <p className="p-8 text-center text-sm text-muted-foreground">
@@ -97,7 +97,7 @@ export default async function AdminCampaignsPage({
                 {campaigns.map((c) => (
                   <TableRow key={c.id}>
                     <TableCell>
-                      <Link href={`/dashboard/campaigns/${c.id}`} className="font-medium hover:text-fuchsia-300">
+                      <Link href={`/dashboard/campaigns/${c.id}`} className="font-medium hover:text-primary">
                         {c.songName}
                       </Link>
                       <p className="text-xs text-muted-foreground">{formatDate(c.createdAt)}</p>

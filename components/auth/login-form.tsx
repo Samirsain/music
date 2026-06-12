@@ -44,12 +44,12 @@ export function LoginForm() {
         <Label htmlFor="password">Password</Label>
         <Input id="password" name="password" type="password" placeholder="••••••••" required autoComplete="current-password" />
       </div>
-      <Button type="submit" variant="gradient" className="w-full" disabled={loading}>
+      <Button type="submit" variant="default" className="w-full" disabled={loading}>
         {loading && <Loader2 className="size-4 animate-spin" />}
         Log in
       </Button>
 
-      <div className="rounded-lg border border-white/10 bg-white/[0.03] p-3 text-xs text-muted-foreground">
+      <div className="rounded-lg border border-border bg-muted/50 p-3 text-xs text-muted-foreground">
         <p className="font-medium text-foreground">Demo accounts</p>
         <p className="mt-1">Artist — demo@artist.com / Demo@123</p>
         <p>Admin — admin@amplitune.in / Admin@123</p>

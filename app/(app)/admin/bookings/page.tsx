@@ -28,11 +28,11 @@ export default async function AdminBookingsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold">Influencer hires</h2>
+        <h2 className="text-2xl font-semibold">Influencer hires</h2>
         <p className="text-muted-foreground">Accept or reject collaboration requests on behalf of influencers.</p>
       </div>
 
-      <Card className="border-white/10 py-0">
+      <Card className="border-border py-0">
         <CardContent className="px-0">
           {bookings.length === 0 ? (
             <p className="p-8 text-center text-sm text-muted-foreground">No hire requests yet.</p>

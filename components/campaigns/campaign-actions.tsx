@@ -43,7 +43,7 @@ export function PayCampaignButton({
 
   return (
     <>
-      <Button variant="gradient" onClick={() => setOpen(true)}>
+      <Button variant="default" onClick={() => setOpen(true)}>
         <CreditCard className="size-4" /> Pay {formatINR(amount)}
       </Button>
       <Dialog open={open} onOpenChange={setOpen}>
@@ -62,7 +62,7 @@ export function PayCampaignButton({
                 onClick={() => setMethod(m)}
                 className={cn(
                   "rounded-xl border p-3 text-center text-sm font-medium transition-colors",
-                  method === m ? "border-fuchsia-500 bg-fuchsia-500/10" : "border-white/10 hover:border-white/20"
+                  method === m ? "border-primary bg-primary/5" : "border-border hover:border-primary/30"
                 )}
               >
                 {m === "NETBANKING" ? "Net Banking" : m === "CARD" ? "Card" : "UPI"}
@@ -76,7 +76,7 @@ export function PayCampaignButton({
             <Button variant="ghost" onClick={() => setOpen(false)}>
               Cancel
             </Button>
-            <Button variant="gradient" onClick={pay} disabled={loading}>
+            <Button variant="default" onClick={pay} disabled={loading}>
               {loading && <Loader2 className="size-4 animate-spin" />}
               Pay {formatINR(amount)}
             </Button>
@@ -132,7 +132,7 @@ export function RenewButton({ goal }: { goal?: string }) {
   void goal;
   const router = useRouter();
   return (
-    <Button variant="gradient" onClick={() => router.push("/dashboard/campaigns/new")}>
+    <Button variant="default" onClick={() => router.push("/dashboard/campaigns/new")}>
       <RefreshCw className="size-4" /> Renew campaign
     </Button>
   );

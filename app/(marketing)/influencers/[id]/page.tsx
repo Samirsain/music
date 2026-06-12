@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowLeft, BadgeCheck, MapPin, Sparkles, TrendingUp, Users2 } from "lucide-react";
+import { ArrowLeft, BadgeCheck, MapPin, Activity, TrendingUp, Users2 } from "lucide-react";
 import { prisma } from "@/lib/db";
 import { getSession } from "@/lib/auth";
 import { GradientAvatar } from "@/components/shared/gradient-avatar";
@@ -49,7 +49,7 @@ export default async function InfluencerDetailPage({
 
   const stats = [
     { label: "Followers", value: formatCompact(influencer.followers), icon: TrendingUp },
-    { label: "Engagement", value: `${influencer.engagementRate.toFixed(1)}%`, icon: Sparkles },
+    { label: "Engagement", value: `${influencer.engagementRate.toFixed(1)}%`, icon: Activity },
     { label: "Collabs done", value: `${influencer._count.bookings}`, icon: Users2 },
   ];
 
@@ -62,8 +62,8 @@ export default async function InfluencerDetailPage({
         <ArrowLeft className="size-4" /> Back to all influencers
       </Link>
 
-      <div className="mt-6 overflow-hidden rounded-3xl border border-white/10 bg-card/50">
-        <div className="relative h-32 bg-gradient-to-br from-violet-600/40 via-fuchsia-600/30 to-cyan-600/20 sm:h-40">
+      <div className="mt-6 overflow-hidden rounded-3xl border border-border bg-card">
+        <div className="relative h-32 bg-gradient-to-br from-violet-100 via-violet-50 to-sky-100 sm:h-40">
           {influencer.featured && (
             <Badge variant="violet" className="absolute right-4 top-4 gap-1">
               <BadgeCheck className="size-3" /> Featured creator
@@ -80,7 +80,7 @@ export default async function InfluencerDetailPage({
                 textClassName="text-2xl"
               />
               <div className="pb-1">
-                <h1 className="text-2xl font-bold">{influencer.name}</h1>
+                <h1 className="text-2xl font-semibold">{influencer.name}</h1>
                 <p className="text-muted-foreground">{influencer.handle}</p>
               </div>
             </div>
@@ -105,8 +105,8 @@ export default async function InfluencerDetailPage({
 
           <div className="mt-6 grid grid-cols-3 gap-3">
             {stats.map((s) => (
-              <div key={s.label} className="rounded-2xl border border-white/10 bg-background/40 p-4 text-center">
-                <s.icon className="mx-auto size-4 text-fuchsia-400" />
+              <div key={s.label} className="rounded-2xl border border-border bg-muted/40 p-4 text-center">
+                <s.icon className="mx-auto size-4 text-primary" />
                 <div className="mt-2 text-lg font-bold">{s.value}</div>
                 <div className="text-xs text-muted-foreground">{s.label}</div>
               </div>
@@ -117,9 +117,9 @@ export default async function InfluencerDetailPage({
 
       <div className="mt-10">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold">Services &amp; pricing</h2>
+          <h2 className="text-xl font-semibold">Services &amp; pricing</h2>
           <span className="text-sm text-muted-foreground">
-            from <span className="font-semibold text-gradient">{formatINR(influencer.startingPrice)}</span>
+            from <span className="font-semibold text-primary">{formatINR(influencer.startingPrice)}</span>
           </span>
         </div>
         <p className="mt-1 text-sm text-muted-foreground">

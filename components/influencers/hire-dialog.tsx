@@ -82,13 +82,13 @@ export function HireDialog({
           </DialogDescription>
         </DialogHeader>
 
-        <div className="rounded-lg border border-white/10 bg-white/[0.03] p-3">
+        <div className="rounded-lg border border-border bg-muted/60 p-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <PlatformBadge platform={service.platform} />
               <span className="text-sm font-medium">{service.title}</span>
             </div>
-            <span className="font-semibold text-gradient">{formatINR(service.price)}</span>
+            <span className="font-semibold text-primary">{formatINR(service.price)}</span>
           </div>
           <p className="mt-1.5 text-xs text-muted-foreground">
             Delivery in ~{service.deliveryDays} days
@@ -117,7 +117,7 @@ export function HireDialog({
               <Button type="button" variant="ghost" onClick={() => onOpenChange(false)}>
                 Cancel
               </Button>
-              <Button type="submit" variant="gradient" disabled={loading}>
+              <Button type="submit" variant="default" disabled={loading}>
                 {loading && <Loader2 className="size-4 animate-spin" />}
                 Send request · {formatINR(service.price)}
               </Button>
@@ -132,7 +132,7 @@ export function HireDialog({
               <Button variant="outline" onClick={() => router.push("/login")}>
                 Log in
               </Button>
-              <Button variant="gradient" onClick={() => router.push("/signup")}>
+              <Button variant="default" onClick={() => router.push("/signup")}>
                 Create account
               </Button>
             </DialogFooter>

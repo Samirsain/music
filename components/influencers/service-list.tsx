@@ -33,7 +33,7 @@ export function ServiceList({
         {services.map((s) => (
           <div
             key={s.id}
-            className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-card/50 p-5 transition-colors hover:border-fuchsia-500/30 sm:flex-row sm:items-center sm:justify-between"
+            className="flex flex-col gap-3 rounded-2xl border border-border bg-card p-5 transition-colors hover:border-primary/30 sm:flex-row sm:items-center sm:justify-between"
           >
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-2">
@@ -47,9 +47,9 @@ export function ServiceList({
             </div>
             <div className="flex items-center justify-between gap-4 sm:flex-col sm:items-end">
               <div className="text-right">
-                <div className="text-lg font-bold text-gradient">{formatINR(s.price)}</div>
+                <div className="text-lg font-semibold text-primary">{formatINR(s.price)}</div>
               </div>
-              <Button variant="gradient" onClick={() => hire(s)}>
+              <Button variant="default" onClick={() => hire(s)}>
                 Hire now
               </Button>
             </div>

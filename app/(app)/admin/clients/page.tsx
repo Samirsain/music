@@ -27,11 +27,11 @@ export default async function AdminClientsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold">Clients</h2>
+        <h2 className="text-2xl font-semibold">Clients</h2>
         <p className="text-muted-foreground">Every artist on the platform and their activity.</p>
       </div>
 
-      <Card className="border-white/10 py-0">
+      <Card className="border-border py-0">
         <CardContent className="px-0">
           {clients.length === 0 ? (
             <p className="p-8 text-center text-sm text-muted-foreground">No clients yet.</p>
@@ -71,7 +71,7 @@ export default async function AdminClientsPage() {
                       </TableCell>
                       <TableCell className="font-medium">{c._count.campaigns}</TableCell>
                       <TableCell className="font-medium">{c._count.bookings}</TableCell>
-                      <TableCell className="font-medium text-emerald-400">{formatINR(spent)}</TableCell>
+                      <TableCell className="font-medium text-emerald-600">{formatINR(spent)}</TableCell>
                       <TableCell className="text-sm text-muted-foreground">{formatDate(c.createdAt)}</TableCell>
                     </TableRow>
                   );
