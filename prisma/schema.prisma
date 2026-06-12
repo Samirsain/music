@@ -1,0 +1,138 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String     @id @default(cuid())
+  name         String
+  artistName   String?
+  email        String     @unique
+  passwordHash String
+  phone        String?
+  genre        String?
+  role         String     @default("ARTIST") // ARTIST | ADMIN
+  createdAt    DateTime   @default(now())
+  campaigns    Campaign[]
+  bookings     Booking[]
+  payments     Payment[]
+}
+
+model Campaign {
+  id             String           @id @default(cuid())
+  userId         String
+  user           User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  // What is being promoted
+  songName       String
+  artistName     String
+  genre          String
+  releaseDate    DateTime?
+  trackUrl       String?
+  coverArtUrl    String?
+  description    String?
+  // Goal → mapped to ad objectives automatically
+  goal           String // YOUTUBE_VIEWS | SPOTIFY_STREAMS | INSTAGRAM_FOLLOWERS | VIDEO_REACH | EVENT_PROMOTION
+  adPlatforms    String // csv: GOOGLE,META
+  // Budget
+  dailyBudget    Int // INR
+  durationDays   Int // 7 | 14 | 30
+  totalBudget    Int
+  serviceFee     Int
+  totalAmount    Int
+  // Audience
+  targetStates   String // "ALL_INDIA" or csv of states
+  ageRange       String
+  similarArtists String?
+  // Lifecycle
+  status         String           @default("PENDING_PAYMENT") // PENDING_PAYMENT | IN_REVIEW | LIVE | PAUSED | COMPLETED | CANCELLED
+  startedAt      DateTime?
+  endsAt         DateTime?
+  createdAt      DateTime         @default(now())
+  payment        Payment?
+  metrics        CampaignMetric[]
+}
+
+model CampaignMetric {
+  id          String   @id @default(cuid())
+  campaignId  String
+  campaign    Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  date        DateTime
+  impressions Int
+  clicks      Int
+  views       Int
+  spend       Int
+
+  @@unique([campaignId, date])
+}
+
+model Influencer {
+  id             String              @id @default(cuid())
+  name           String
+  handle         String
+  bio            String
+  category       String // Bollywood | Punjabi | Hip-Hop | Indie | EDM | Lo-fi | Devotional | Regional | Playlist Curator | Music Reviewer
+  platforms      String // csv: INSTAGRAM,YOUTUBE,SPOTIFY
+  followers      Int
+  engagementRate Float
+  location       String?
+  imageUrl       String?
+  featured       Boolean             @default(false)
+  active         Boolean             @default(true)
+  startingPrice  Int // denormalized min(services.price) for fast filtering
+  createdAt      DateTime            @default(now())
+  services       InfluencerService[]
+  bookings       Booking[]
+}
+
+model InfluencerService {
+  id           String     @id @default(cuid())
+  influencerId String
+  influencer   Influencer @relation(fields: [influencerId], references: [id], onDelete: Cascade)
+  title        String
+  description  String
+  platform     String // INSTAGRAM | YOUTUBE | SPOTIFY
+  price        Int // INR
+  deliveryDays Int
+  bookings     Booking[]
+}
+
+model Booking {
+  id            String             @id @default(cuid())
+  userId        String
+  user          User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  influencerId  String
+  influencer    Influencer         @relation(fields: [influencerId], references: [id], onDelete: Cascade)
+  serviceId     String?
+  service       InfluencerService? @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+  // Snapshot of the hired service so history survives service edits/deletes
+  serviceTitle    String
+  servicePlatform String
+  songName      String
+  trackUrl      String?
+  message       String?
+  preferredDate DateTime?
+  amount        Int
+  status        String             @default("PENDING") // PENDING | ACCEPTED | REJECTED | COMPLETED | CANCELLED
+  paymentStatus String             @default("UNPAID") // UNPAID | PAID | REFUNDED
+  createdAt     DateTime           @default(now())
+  payment       Payment?
+}
+
+model Payment {
+  id         String    @id @default(cuid())
+  userId     String
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  campaignId String?   @unique
+  campaign   Campaign? @relation(fields: [campaignId], references: [id], onDelete: SetNull)
+  bookingId  String?   @unique
+  booking    Booking?  @relation(fields: [bookingId], references: [id], onDelete: SetNull)
+  amount     Int
+  method     String // UPI | CARD | NETBANKING
+  status     String    @default("SUCCESS")
+  reference  String // mock gateway reference (Razorpay-style)
+  createdAt  DateTime  @default(now())
+}
