@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
+import { Prisma } from "@prisma/client";
 import { getCurrentUser } from "@/lib/auth";
 import type { User } from "@prisma/client";
 
@@ -37,6 +38,23 @@ export async function handle<T>(fn: () => Promise<T>): Promise<NextResponse> {
     if (err instanceof ZodError) {
       const first = err.issues[0];
       return jsonError(first ? first.message : "Invalid input", 422);
+    }
+    if (err instanceof Prisma.PrismaClientInitializationError) {
+      console.error("[db] not reachable:", err.message);
+      return jsonError(
+        "Database is not connected. On Vercel: add a Postgres DATABASE_URL (Storage → Create Database → Neon), then redeploy. Check /api/health for status.",
+        503
+      );
+    }
+    if (
+      err instanceof Prisma.PrismaClientKnownRequestError &&
+      (err.code === "P2021" || err.code === "P2022")
+    ) {
+      console.error("[db] schema missing:", err.message);
+      return jsonError(
+        "Database tables are missing. Redeploy so the build can create them (prisma db push). Check /api/health for status.",
+        503
+      );
     }
     console.error(err);
     return jsonError("Something went wrong. Please try again.", 500);
